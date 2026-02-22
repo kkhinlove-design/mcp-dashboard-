@@ -75,7 +75,7 @@ export default function App() {
   return (
     <div style={{ fontFamily: "'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif", background: "#0B0F1A", color: "#E8ECF4", minHeight: "100vh" }}>
       {/* Header */}
-      <div style={{ background: "linear-gradient(135deg, #0D1321 0%, #1B2838 100%)", borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "0 24px", height: 60, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      <div className="header-container" style={{ background: "linear-gradient(135deg, #0D1321 0%, #1B2838 100%)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <span style={{ fontSize: 26 }}>🎼</span>
           <div>
@@ -117,7 +117,7 @@ export default function App() {
         {tab === "overview" && (
           <div>
             {/* Stat Cards */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 16 }}>
+            <div className="grid-stats" style={{ marginBottom: 16 }}>
               {[
                 { icon: "📋", label: "오늘 수집 정책", val: "24건", sub: "고중요도 5건", c: "#3B82F6" },
                 { icon: "⏳", label: "진행중 작업", val: "3건", sub: "12명 중 3명 활동", c: "#10B981" },
@@ -137,7 +137,7 @@ export default function App() {
               ))}
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 16 }}>
+            <div className="grid-summary" style={{ marginBottom: 16 }}>
               {/* Jason Summary */}
               <div style={card}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
@@ -176,7 +176,7 @@ export default function App() {
             {/* Team Mini */}
             <div style={card}>
               <div style={{ fontWeight: 600, fontSize: 14, marginBottom: 14 }}>👥 팀 현황</div>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: 8 }}>
+              <div className="grid-team-mini">
                 {TEAM.map(m => (
                   <div key={m.id} style={{ padding: 12, borderRadius: 10, background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.04)", textAlign: "center" }}>
                     <div style={{ fontSize: 22, marginBottom: 4 }}>{m.emoji}</div>
@@ -207,7 +207,7 @@ export default function App() {
             </div>
 
             {/* Stats */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10, marginBottom: 16 }}>
+            <div className="grid-stats" style={{ gap: 10, marginBottom: 16 }}>
               {[
                 { l: "총 수집", v: "24건", c: "#3B82F6" },
                 { l: "고중요도", v: "5건", c: "#EF4444" },
@@ -221,7 +221,7 @@ export default function App() {
               ))}
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "3fr 2fr", gap: 12 }}>
+            <div className="grid-briefing-layout">
               {/* Policies */}
               <div style={card}>
                 <div style={{ fontWeight: 600, fontSize: 14, marginBottom: 14 }}>🔴 주요 정책</div>
@@ -281,7 +281,7 @@ export default function App() {
         {tab === "team" && (
           <div>
             <div style={{ fontSize: 18, fontWeight: 700, marginBottom: 16 }}>👥 팀원 상세 현황</div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+            <div className="grid-team-full">
               {TEAM.map(m => {
                 const isSel = selMember === m.id;
                 return (
