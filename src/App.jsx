@@ -22,6 +22,9 @@ const POLICIES = [
   { cat: "💼 고용", title: "청년일자리도약장려금 사업주 모집", imp: "medium", amount: "최대 720만원", link: "https://www.work.go.kr/youthjob/main/index.do" },
   { cat: "🏢 소상공인", title: "소상공인 경영안정자금 추가 모집", imp: "medium", amount: "최대 5천만원", link: "https://ols.semas.or.kr/ols/man/info/newPolicyGuide.do" },
   { cat: "🚀 창업지원", title: "초기창업패키지 추가모집 안내", imp: "high", deadline: "2025-04-01", amount: "최대 1억원", link: "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do" },
+  { cat: "📚 교육", title: "2025 온라인 창업 에듀 과정 특별 교육생 모집", imp: "low", deadline: "상시 모집", link: "https://www.k-startup.go.kr/" },
+  { cat: "🌍 수출", title: "초보 수출기업 글로벌 물류비 지원사업 사전 안내", imp: "medium", amount: "최대 300만원", link: "https://www.bizinfo.go.kr/" },
+  { cat: "🌱 친환경", title: "탄소중립포인트제 참여사업장 신규 안내", imp: "low", link: "https://cpoint.or.kr/" },
 ];
 
 const ACTIONS = [
@@ -55,6 +58,7 @@ export default function App() {
   const [selMember, setSelMember] = useState(null);
   const [time, setTime] = useState(new Date());
   const [decided, setDecided] = useState({});
+  const [policyFilter, setPolicyFilter] = useState("all");
 
   useEffect(() => {
     const t = setInterval(() => setTime(new Date()), 1000);
@@ -209,13 +213,17 @@ export default function App() {
             {/* Stats */}
             <div className="grid-stats" style={{ gap: 10, marginBottom: 16 }}>
               {[
-                { l: "총 수집", v: "24건", c: "#3B82F6" },
-                { l: "고중요도", v: "5건", c: "#EF4444" },
-                { l: "중간", v: "12건", c: "#F59E0B" },
-                { l: "일반", v: "7건", c: "#10B981" },
+                { l: "총 수집", v: "24건", c: "#3B82F6", filter: "all" },
+                { l: "고중요도", v: "5건", c: "#EF4444", filter: "high" },
+                { l: "중간", v: "12건", c: "#F59E0B", filter: "medium" },
+                { l: "일반", v: "7건", c: "#10B981", filter: "low" },
               ].map((s, i) => (
-                <div key={i} style={{ padding: "12px 16px", borderRadius: 10, background: s.c + "10", border: "1px solid " + s.c + "25" }}>
-                  <div style={{ fontSize: 10, color: "#94A3B8" }}>{s.l}</div>
+                <div key={i} onClick={() => setPolicyFilter(s.filter)} style={{
+                  padding: "12px 16px", borderRadius: 10, cursor: "pointer", transition: "all 0.2s",
+                  background: policyFilter === s.filter ? s.c + "20" : s.c + "10",
+                  border: policyFilter === s.filter ? "2px solid " + s.c : "1px solid " + s.c + "25"
+                }}>
+                  <div style={{ fontSize: 10, color: policyFilter === s.filter ? "#F1F5F9" : "#94A3B8" }}>{s.l}</div>
                   <div style={{ fontSize: 20, fontWeight: 700, color: s.c }}>{s.v}</div>
                 </div>
               ))}
@@ -224,8 +232,11 @@ export default function App() {
             <div className="grid-briefing-layout">
               {/* Policies */}
               <div style={card}>
-                <div style={{ fontWeight: 600, fontSize: 14, marginBottom: 14 }}>🔴 주요 정책</div>
-                {POLICIES.map((p, i) => (
+                <div style={{ fontWeight: 600, fontSize: 14, marginBottom: 14, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <span>🔴 주요 정책</span>
+                  {policyFilter !== "all" && <span style={{ fontSize: 11, color: "#94A3B8", fontWeight: 400, background: "rgba(255,255,255,0.05)", padding: "2px 8px", borderRadius: 10 }}>필터 적용됨</span>}
+                </div>
+                {POLICIES.filter(p => policyFilter === "all" || p.imp === policyFilter).map((p, i) => (
                   <div key={i} style={{
                     padding: 14, borderRadius: 10, marginBottom: 8,
                     background: p.imp === "high" ? "rgba(239,68,68,0.05)" : "rgba(255,255,255,0.02)",
