@@ -16,12 +16,12 @@ const TEAM = [
 ];
 
 const POLICIES = [
-  { cat: "🚀 창업지원", title: "2025년 예비창업패키지 창업기업 모집", imp: "high", deadline: "2025-04-15", amount: "최대 1억원" },
-  { cat: "🏢 중소기업", title: "중소기업 디지털 전환 지원사업 모집 공고", imp: "high", deadline: "2025-03-30", amount: "최대 1억원" },
-  { cat: "💼 일자리", title: "국민취업지원제도 참여자 모집", imp: "high", deadline: "2025-03-20", amount: "월 50만원" },
-  { cat: "💼 고용", title: "청년일자리도약장려금 사업주 모집", imp: "medium", amount: "최대 720만원" },
-  { cat: "🏢 소상공인", title: "소상공인 경영안정자금 추가 모집", imp: "medium", amount: "최대 5천만원" },
-  { cat: "🚀 창업지원", title: "초기창업패키지 추가모집 안내", imp: "high", deadline: "2025-04-01", amount: "최대 1억원" },
+  { cat: "🚀 창업지원", title: "2025년 예비창업패키지 창업기업 모집", imp: "high", deadline: "2025-04-15", amount: "최대 1억원", link: "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do" },
+  { cat: "🏢 중소기업", title: "중소기업 디지털 전환 지원사업 모집 공고", imp: "high", deadline: "2025-03-30", amount: "최대 1억원", link: "https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/list.do" },
+  { cat: "💼 일자리", title: "국민취업지원제도 참여자 모집", imp: "high", deadline: "2025-03-20", amount: "월 50만원", link: "https://www.kua.go.kr/uaptm010/selectMain.do" },
+  { cat: "💼 고용", title: "청년일자리도약장려금 사업주 모집", imp: "medium", amount: "최대 720만원", link: "https://www.work.go.kr/youthjob/main/index.do" },
+  { cat: "🏢 소상공인", title: "소상공인 경영안정자금 추가 모집", imp: "medium", amount: "최대 5천만원", link: "https://ols.semas.or.kr/ols/man/info/newPolicyGuide.do" },
+  { cat: "🚀 창업지원", title: "초기창업패키지 추가모집 안내", imp: "high", deadline: "2025-04-01", amount: "최대 1억원", link: "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do" },
 ];
 
 const ACTIONS = [
@@ -230,11 +230,20 @@ export default function App() {
                     padding: 14, borderRadius: 10, marginBottom: 8,
                     background: p.imp === "high" ? "rgba(239,68,68,0.05)" : "rgba(255,255,255,0.02)",
                     border: p.imp === "high" ? "1px solid rgba(239,68,68,0.12)" : "1px solid rgba(255,255,255,0.04)",
-                  }}>
+                    cursor: p.link ? "pointer" : "default"
+                  }} onClick={() => p.link && window.open(p.link, "_blank")}>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "start" }}>
                       <div>
                         <span style={{ fontSize: 11, color: "#64748B" }}>{p.cat}</span>
-                        <div style={{ fontSize: 13, fontWeight: 600, marginTop: 3 }}>{p.title}</div>
+                        <div style={{ fontSize: 13, fontWeight: 600, marginTop: 3 }}>
+                          {p.link ? (
+                            <span style={{ color: "#E8ECF4", textDecoration: "underline", textUnderlineOffset: 4, display: "inline-flex", alignItems: "center", gap: 4 }}>
+                              {p.title} <span style={{ fontSize: 11, opacity: 0.8 }}>🔗</span>
+                            </span>
+                          ) : (
+                            p.title
+                          )}
+                        </div>
                       </div>
                       {p.imp === "high" && (
                         <span style={{ background: "#EF4444", color: "#fff", fontSize: 9, padding: "2px 7px", borderRadius: 5, fontWeight: 700, flexShrink: 0 }}>중요</span>
