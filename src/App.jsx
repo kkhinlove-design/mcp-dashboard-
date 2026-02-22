@@ -16,15 +16,35 @@ const TEAM = [
 ];
 
 const POLICIES = [
+  // High (5건)
   { cat: "🚀 창업지원", title: "2025년 예비창업패키지 창업기업 모집", imp: "high", deadline: "2025-04-15", amount: "최대 1억원", link: "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do" },
   { cat: "🏢 중소기업", title: "중소기업 디지털 전환 지원사업 모집 공고", imp: "high", deadline: "2025-03-30", amount: "최대 1억원", link: "https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/list.do" },
   { cat: "💼 일자리", title: "국민취업지원제도 참여자 모집", imp: "high", deadline: "2025-03-20", amount: "월 50만원", link: "https://www.kua.go.kr/uaptm010/selectMain.do" },
+  { cat: "🚀 창업지원", title: "초기창업패키지 추가모집 안내", imp: "high", deadline: "2025-04-01", amount: "최대 1억원", link: "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do" },
+  { cat: "🌐 글로벌", title: "2025 K-Startup 글로벌 진출 프로그램 참가기업 모집", imp: "high", deadline: "2025-04-10", amount: "최대 5천만원", link: "https://www.k-startup.go.kr/" },
+
+  // Medium (12건)
   { cat: "💼 고용", title: "청년일자리도약장려금 사업주 모집", imp: "medium", amount: "최대 720만원", link: "https://www.work.go.kr/youthjob/main/index.do" },
   { cat: "🏢 소상공인", title: "소상공인 경영안정자금 추가 모집", imp: "medium", amount: "최대 5천만원", link: "https://ols.semas.or.kr/ols/man/info/newPolicyGuide.do" },
-  { cat: "🚀 창업지원", title: "초기창업패키지 추가모집 안내", imp: "high", deadline: "2025-04-01", amount: "최대 1억원", link: "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do" },
-  { cat: "📚 교육", title: "2025 온라인 창업 에듀 과정 특별 교육생 모집", imp: "low", deadline: "상시 모집", link: "https://www.k-startup.go.kr/" },
   { cat: "🌍 수출", title: "초보 수출기업 글로벌 물류비 지원사업 사전 안내", imp: "medium", amount: "최대 300만원", link: "https://www.bizinfo.go.kr/" },
+  { cat: "💻 R&D", title: "창업성장기술개발사업 (디딤돌) 상반기 모집", imp: "medium", deadline: "2025-03-25", amount: "최대 1.2억원", link: "https://www.smtech.go.kr/" },
+  { cat: "🤝 네트워킹", title: "1인 창조기업 지원센터 입주기업 정기 모집", imp: "medium", deadline: "2025-03-15", link: "https://www.k-startup.go.kr/" },
+  { cat: "📝 멘토링", title: "전문가 1:1 맞춤형 멘토링 지원사업", imp: "medium", deadline: "상시 모집", link: "https://www.k-startup.go.kr/" },
+  { cat: "💰 자금", title: "혁신성장지원자금 융자 신청 접수", imp: "medium", amount: "심사 후 결정", link: "https://www.kosmes.or.kr/" },
+  { cat: "📢 마케팅", title: "중소기업 홍보마케팅 지원사업 패키지", imp: "medium", deadline: "2025-04-05", amount: "최대 1천만원", link: "https://www.bizinfo.go.kr/" },
+  { cat: "📊 데이터", title: "데이터 바우처 지원사업 수요기업 모집", imp: "medium", deadline: "2025-04-20", amount: "최대 4.5천만원", link: "https://kdata.or.kr/" },
+  { cat: "🔒 보안", title: "정보보호 클라우드 서비스 지원사업", imp: "medium", deadline: "2025-05-01", link: "https://www.kisa.or.kr/" },
+  { cat: "☁️ 클라우드", title: "클라우드 서비스 보급·확산 사업", imp: "medium", amount: "최대 1.5천만원", link: "https://www.cloudsup.or.kr/" },
+  { cat: "🏭 제조", title: "스마트공장 구축 및 고도화 사업 사전 공고", imp: "medium", deadline: "2025-05-15", link: "https://www.smart-factory.kr/" },
+
+  // Low (7건)
+  { cat: "📚 교육", title: "2025 온라인 창업 에듀 과정 특별 교육생 모집", imp: "low", deadline: "상시 모집", link: "https://www.k-startup.go.kr/" },
   { cat: "🌱 친환경", title: "탄소중립포인트제 참여사업장 신규 안내", imp: "low", link: "https://cpoint.or.kr/" },
+  { cat: "🏆 공모전", title: "제15회 대한민국 창업경진대회 사전 공고", imp: "low", deadline: "2025-06-01", link: "https://www.k-startup.go.kr/" },
+  { cat: "🗓️ 행사", title: "2025 스타트업 박람회 참여 부스 모집", imp: "low", deadline: "2025-04-30", link: "https://www.bizinfo.go.kr/" },
+  { cat: "📄 세무", title: "스타트업을 위한 기초 세무/회계 온라인 세미나", imp: "low", deadline: "2025-03-10", link: "https://www.k-startup.go.kr/" },
+  { cat: "🌐 해외", title: "글로벌 창업 동향 리포트 구독 신청", imp: "low", deadline: "상시 접수", link: "https://www.kotra.or.kr/" },
+  { cat: "👨‍💻 오피스", title: "청년 창업자 코워킹 스페이스 무료 대관 안내", imp: "low", link: "https://www.youthcenter.go.kr/" },
 ];
 
 const ACTIONS = [
